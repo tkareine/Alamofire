@@ -785,7 +785,7 @@ public class Request {
 
                     switch challenge.protectionSpace.authenticationMethod! {
                     case NSURLAuthenticationMethodServerTrust:
-                        credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust)
+                        credential = session.configuration.URLCredentialStorage?.defaultCredentialForProtectionSpace(challenge.protectionSpace)
                     default:
                         credential = self.credential ?? session.configuration.URLCredentialStorage?.defaultCredentialForProtectionSpace(challenge.protectionSpace)
                     }
